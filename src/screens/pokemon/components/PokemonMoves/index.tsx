@@ -32,7 +32,7 @@ const PokemonMoves = ({ moves }: PokemonMovesProps) => {
 
   return (
     <Card sx={{ padding: 4 }} raised>
-      <Typography variant="h5" color="text.secondary">
+      <Typography variant="h5" color="text.secondary" mb={2}>
         Movimientos
       </Typography>
 
