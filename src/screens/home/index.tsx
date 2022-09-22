@@ -81,7 +81,7 @@ const Home = () => {
         )}
 
         {status === Status.ERROR && (
-          <DittoMessage message="Lo sentimos, no he podido encontrar sus pokemons :(" />
+          <DittoMessage message="Lo siento, no he podido encontrar su pokemon :(" />
         )}
       </Container>
     </>
