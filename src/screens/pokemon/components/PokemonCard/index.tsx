@@ -17,7 +17,7 @@ interface PokemonCardProps {
 
 const PokemonCard = ({ data }: PokemonCardProps) => {
   return (
-    <Card sx={{ maxWidth: 345 }} raised>
+    <Card raised>
       <CardMedia
         component="img"
         alt={data.name}
