@@ -36,26 +36,35 @@ const PokemonMoves = ({ moves }: PokemonMovesProps) => {
       <Typography variant="h5" color="text.secondary">
         Movimientos
       </Typography>
-      <List>
-        {movesState.map((movement, index) => {
-          return (
-            <ListItem
-              key={movement.move.name}
-              secondaryAction={
-                <IconButton
-                  edge="end"
-                  aria-label="delete"
-                  onClick={() => deleteMove(index)}
-                >
-                  <DeleteIcon />
-                </IconButton>
-              }
-            >
-              <ListItemText primary={movement.move.name} />
-            </ListItem>
-          )
-        })}
-      </List>
+
+      {movesState && !movesState.length && (
+        <Typography variant="h6" color="text.secondary">
+          No se han encontrado movimientos para este Pokemon :(
+        </Typography>
+      )}
+
+      {movesState && !!movesState.length && (
+        <List>
+          {movesState.map((movement, index) => {
+            return (
+              <ListItem
+                key={movement.move.name}
+                secondaryAction={
+                  <IconButton
+                    edge="end"
+                    aria-label="delete"
+                    onClick={() => deleteMove(index)}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                }
+              >
+                <ListItemText primary={movement.move.name} />
+              </ListItem>
+            )
+          })}
+        </List>
+      )}
     </Card>
   )
 }
