@@ -27,6 +27,7 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   }, [])
 
   const fetchPokemons = async () => {
+    setStatus(Status.LOADING)
     try {
       const response = await pokeAPI.get<NamedAPIResourceList>(
         'pokemon?limit=100000&offset=0'
