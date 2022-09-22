@@ -35,7 +35,8 @@ const PokemonTable = ({ pokemons }: PokemonTableProps) => {
   })
 
   const handleRowClick: GridEventListener<'rowClick'> = (params) => {
-    navigate(`/pokemon/${params.row.url.slice(-2)}`)
+    const splittedUrl = params.row.url.split('/')
+    navigate(`/pokemon/${splittedUrl[splittedUrl.length - 2]}`)
   }
 
   return (
