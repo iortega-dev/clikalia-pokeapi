@@ -11,7 +11,6 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete'
 
 import { PokemonMove } from '../../../../types/Pokemon'
-import { Box } from '@mui/system'
 
 interface PokemonMovesProps {
   moves: PokemonMove[]
