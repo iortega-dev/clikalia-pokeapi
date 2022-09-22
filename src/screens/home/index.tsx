@@ -1,17 +1,34 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Typography, TextField, Container, Button, Grid } from '@mui/material'
 
 import loadingPokeball from '../../assets/img/pokeball-loading.gif'
 
-import PokemonContext from '../../contexts/PokemonContext'
-
 import PokemonTable from '../../components/PokemonTable'
-
-import { Status } from '../../api/pokeAPI'
 import DittoMessage from '../../components/DittoMessage'
 
+import { Status } from '../../api/pokeAPI'
+
+import { useDebounce } from '../../hooks/useDebounce'
+import { usePokemonContext } from '../../hooks/usePokemonContext'
+
 const Home = () => {
-  const { pokemonResponse, status } = useContext(PokemonContext)
+  const { pokemonResponse, status, fetchPokemons, searchPokemon } =
+    usePokemonContext()
+
+  const [searchTerm, setSearchTerm] = useState<string>('')
+  const debouncedSearchTerm: string = useDebounce(searchTerm, 500)
+
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      searchPokemon(debouncedSearchTerm)
+    } else {
+      fetchPokemons()
+    }
+  }, [debouncedSearchTerm])
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value)
+  }
 
   return (
     <>
@@ -27,7 +44,11 @@ const Home = () => {
       <Container maxWidth="sm">
         <Grid container columnSpacing={2} mb={4}>
           <Grid item xs>
-            <TextField fullWidth placeholder="Inserte pokemon a buscar..." />
+            <TextField
+              fullWidth
+              placeholder="Inserte pokemon a buscar..."
+              onChange={handleSearchChange}
+            />
           </Grid>
           <Grid item container xs={3}>
             <Button fullWidth variant="contained" size="large">
@@ -47,7 +68,7 @@ const Home = () => {
         )}
 
         {status === Status.ERROR && (
-          <DittoMessage message="Lo sentimos, ha ocurrido un error al cargar sus Pokemons :(" />
+          <DittoMessage message="Lo sentimos, no he podido encontrar sus pokemons :(" />
         )}
       </Container>
     </>
