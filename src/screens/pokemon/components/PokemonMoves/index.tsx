@@ -20,7 +20,8 @@ const PokemonMoves = ({ moves }: PokemonMovesProps) => {
   const [movesState, setMovesState] = useState<PokemonMove[]>([])
 
   useEffect(() => {
-    setMovesState(moves.sort((a, b) => (a.move.url > b.move.url ? 1 : -1)))
+    moves.sort((a, b) => (a.move.url > b.move.url ? 1 : -1))
+    setMovesState(moves)
   }, [])
 
   const deleteMove = (index: number) => {
