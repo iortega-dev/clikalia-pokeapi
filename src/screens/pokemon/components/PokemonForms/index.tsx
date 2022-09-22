@@ -15,7 +15,7 @@ const PokemonForms = ({ forms }: PokemonFormsProps) => {
 
   return (
     <Card sx={{ padding: 4 }} raised>
-      <Typography variant="h5" color="text.secondary" mb={2}>
+      <Typography variant="h6" color="text.secondary" mb={2}>
         Formas
       </Typography>
       {pokemonForms && !!pokemonForms.length && status === Status.SUCCESS && (

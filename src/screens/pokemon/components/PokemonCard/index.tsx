@@ -30,27 +30,23 @@ const PokemonCard = ({ data }: PokemonCardProps) => {
         }
       />
       <CardContent sx={{ padding: 4 }}>
-        <Typography gutterBottom variant="h4" component="div">
-          {data.name.toUpperCase()}
+        <Typography gutterBottom>{data.name.toUpperCase()}</Typography>
+        <Typography variant="h6" color="text.secondary">
+          Habilidades
         </Typography>
-        <Typography variant="body2">
-          <Typography variant="h5" color="text.secondary">
-            Habilidades
-          </Typography>
-          <List>
-            {data.abilities.map((ability) => {
-              if (!ability.is_hidden) {
-                return (
-                  <ListItem key={ability.slot}>
-                    <ListItemText
-                      primary={`${ability.slot}. ${ability.ability.name}`}
-                    />
-                  </ListItem>
-                )
-              }
-            })}
-          </List>
-        </Typography>
+        <List>
+          {data.abilities.map((ability) => {
+            if (!ability.is_hidden) {
+              return (
+                <ListItem key={ability.slot}>
+                  <ListItemText
+                    primary={`${ability.slot}. ${ability.ability.name}`}
+                  />
+                </ListItem>
+              )
+            }
+          })}
+        </List>
       </CardContent>
     </Card>
   )
