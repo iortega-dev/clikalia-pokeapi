@@ -32,6 +32,9 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
       const response = await pokeAPI.get<NamedAPIResourceList>(
         'pokemon?limit=100000&offset=0'
       )
+
+      response.data.results.sort((a, b) => (a.name > b.name ? 1 : -1))
+
       setPokemonResponse(response.data)
       setStatus(Status.SUCCESS)
     } catch (error) {
