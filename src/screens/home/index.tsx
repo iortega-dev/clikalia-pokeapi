@@ -30,6 +30,10 @@ const Home = () => {
     setSearchTerm(event.target.value)
   }
 
+  const handleResetSearch = () => {
+    setSearchTerm('')
+  }
+
   return (
     <>
       <Typography
@@ -47,11 +51,18 @@ const Home = () => {
             <TextField
               fullWidth
               placeholder="Inserte pokemon a buscar..."
+              value={searchTerm}
               onChange={handleSearchChange}
             />
           </Grid>
           <Grid item container xs={3}>
-            <Button fullWidth variant="contained" size="large">
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              onClick={handleResetSearch}
+              disabled={searchTerm === ''}
+            >
               Reset
             </Button>
           </Grid>
