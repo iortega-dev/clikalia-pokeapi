@@ -1,7 +1,8 @@
 import React from 'react'
+import Layout from './components/Layout'
 
 function App() {
-  return <></>
+  return <Layout />
 }
 
 export default App
