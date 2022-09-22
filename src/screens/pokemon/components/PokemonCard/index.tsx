@@ -22,7 +22,12 @@ const PokemonCard = ({ data }: PokemonCardProps) => {
         component="img"
         alt={data.name}
         height="200"
-        src={data.sprites.back_default as string}
+        sx={{ objectFit: 'contain' }}
+        src={
+          data.sprites.back_default
+            ? (data.sprites.back_default as string)
+            : (data.sprites.front_default as string)
+        }
       />
       <CardContent sx={{ padding: 4 }}>
         <Typography gutterBottom variant="h4" component="div">
