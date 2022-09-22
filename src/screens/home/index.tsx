@@ -67,7 +67,9 @@ const Home = () => {
             </Button>
           </Grid>
         </Grid>
+      </Container>
 
+      <Container maxWidth="md">
         {status === Status.LOADING && (
           <Grid container item alignItems="center" justifyContent="center">
             <img src={loadingPokeball} />
