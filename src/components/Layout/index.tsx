@@ -2,6 +2,7 @@ import React from 'react'
 
 import { AppBar, Toolbar, Typography, Container } from '@mui/material'
 import Router from '../../routes'
+import { Link } from 'react-router-dom'
 
 const Layout = () => {
   return (
@@ -9,7 +10,9 @@ const Layout = () => {
       <AppBar position="relative">
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
-            Clikalia PokeAPI
+            <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+              Clikalia PokeAPI
+            </Link>
           </Typography>
         </Toolbar>
       </AppBar>
