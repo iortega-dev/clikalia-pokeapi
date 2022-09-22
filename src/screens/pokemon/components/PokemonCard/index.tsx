@@ -21,10 +21,10 @@ const PokemonCard = ({ data }: PokemonCardProps) => {
       <CardMedia
         component="img"
         alt={data.name}
-        height="140"
+        height="200"
         src={data.sprites.back_default as string}
       />
-      <CardContent>
+      <CardContent sx={{ padding: 4 }}>
         <Typography gutterBottom variant="h4" component="div">
           {data.name.toUpperCase()}
         </Typography>
